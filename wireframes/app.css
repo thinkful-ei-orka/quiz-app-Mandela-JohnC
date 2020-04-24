@@ -23,13 +23,7 @@ main {
     ;
 }
 
-.question-div {
-    border: 2px dotted paleturquoise;
-    height: 50px;
 
-
-
-}
 .question-section {
     border: 2px dotted paleturquoise;
 
@@ -64,9 +58,9 @@ border: 1px solid black;
 
 
 }
-.submit-button > button {
-display: block;
-
+.submit-button {
+width: 100%;
+height: 100%;
 
 
 }
