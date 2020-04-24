@@ -26,7 +26,19 @@ main {
 
 .question-section {
     border: 2px dotted paleturquoise;
-
+display: flex;
+justify-content: space-between;
+}
+.question-div{
+    flex-direction: row;
+}
+.question-count{
+    display: flex;
+    flex-direction: column;
+}
+.question-count span {
+    padding: 3px;
+    font-size: 1.3rem;
 }
 .question-list {
     display: flex;
@@ -60,7 +72,7 @@ border: 1px solid black;
 }
 .submit-button {
 width: 100%;
-height: 5px;
+height: 54px;
 border-bottom-left-radius: 10px;
 border-bottom-right-radius: 10px;
 
