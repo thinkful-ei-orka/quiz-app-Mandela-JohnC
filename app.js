@@ -7,25 +7,55 @@ const store = {
   // 5 or more questions are required
   questions: [
     {
-      question: 'What color is broccoli?',
+      question: 'The shift() method removes the first element from an array and does what next?',
       answers: [
-        'red',
-        'orange',
-        'pink',
-        'green'
+        'returns the next element in the array',
+        'returns a shrug emoji in Unicode Hex',
+        'returns the removed element',
+        'returns a copy of the array'
       ],
-      correctAnswer: 'green'
+      correctAnswer: 'returns the removed element'
     },
     {
-      question: 'What is the current year?',
+      question: 'The which method calls a function once for each element in an array?',
       answers: [
-        '1970',
-        '2015',
-        '2019',
-        '2005'
+        'forTheWin()',
+        'forEach()',
+        'forCamelot()',
+        'forEvery()'
       ],
-      correctAnswer: '2019'
-    }
+      correctAnswer: 'forEach()'
+    },
+    {
+      question: 'The filter() method returns an array of what?',
+      answers: [
+        'all elements that fail the test function',
+        'index numbers of all elements that pass the test function',
+        'all elements that pass the test function',
+        'all elements that are the specified data type'
+      ],
+      correctAnswer: 'all elements that pass the test function'
+    },
+    {
+      question: 'The map() method does what with a provided function as an argument?',
+      answers: [
+        'returns a map to El Dorado',
+        'returns an object with the function name as the key and the original array as the value',
+        'returns the orginal array with the results of the funcion called on each element',
+        'returns a new array with the results of the funcion called on each element in the orginal array'
+      ],
+      correctAnswer: 'returns a new array with the results of the funcion called on each element in the orginal array'
+    },
+    {
+      question: 'The every() method does what for each element in an array?',
+      answers: [
+        'checks if elements pass a test as provided as a fucntion',
+        'converts the elements to true or false depending the provided function',
+        'creates a new array with each element being identical to the first element in the array',
+        'creates a new array with converting each element to \'every\' 
+      ],
+      correctAnswer: 'checks if elements pass a test as provided as a fucntion'
+    },
   ],
   quizStarted: false,
   questionNumber: 0,
