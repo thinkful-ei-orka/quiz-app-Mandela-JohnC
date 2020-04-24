@@ -83,7 +83,7 @@ const store = {
 /**
  * Generate HTML Start Screen
  */
-let start = function() {
+let startPageTemplate = function() {
   $('main').html(`<container>
             <section class="question-section">
 
@@ -102,7 +102,7 @@ let questionsTemplate = function () {
   $('main').html(`   <container>
             <section class="question-section">
                 <div class="question-div">
-                    <h2>Question Placeholder</h2>
+                    <h2>${store.questions.question[0]}</h2>
                 </div>
                 <div class="question-count">
                     <span id="count">Question: 3/5</span>
@@ -124,17 +124,46 @@ let questionsTemplate = function () {
             </section>
         </container>`)
 }
+
+let  finishTemplate = function () {
+  $('main').html(`<container>
+  <section class="question-section">
+
+      <h2 id="finish-text">Nice!</h2>
+
+  </section>
+  <section class="final-score">
+      <h3>You got: <span id="final-score-num">5/5</span> correct!</h3>
+
+  </section>
+  <section class="restart-buttons">
+
+      <button class="restart-button" type="button">Restart</button>
+
+  </section>
+</container>`)
+}
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
 function render() {
 if (store.quizStarted === false) {
-  $('main').html(start())
+  $('main').html(startPageTemplate())
 
+} else if (store.quizStarted === true && store.questionNumber < store.questions.length) {
+  $('main').html(questionsTemplate())
+} else {
+  $('main').html(finishTemplate())
 }
 }
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+
+
+
+
+
+
 $(render())
