@@ -52,7 +52,7 @@ const store = {
         'checks if elements pass a test as provided as a fucntion',
         'converts the elements to true or false depending the provided function',
         'creates a new array with each element being identical to the first element in the array',
-        'creates a new array with converting each element to \'every\' 
+        'creates a new array with converting each element to \'every\''
       ],
       correctAnswer: 'checks if elements pass a test as provided as a fucntion'
     },
@@ -80,7 +80,24 @@ const store = {
 /********** TEMPLATE GENERATION FUNCTIONS **********/
 
 // These functions return HTML templates
+/**
+ * Generate HTML Start Screen
+ */
+let start = function() {
+  $('main').html(`<container>
+            <section class="question-section">
 
+                <h2>Are you ready?</h2>
+
+            </section>
+            <section class="start-buttons">
+
+                <button class="go-button" type="button">Go</button>
+                <button class="scared-button" type="button">No I'm scared</button>
+            </section>
+        </container>`)
+
+}
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
@@ -88,3 +105,4 @@ const store = {
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
+$(document).ready(start());

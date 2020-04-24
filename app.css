@@ -1,8 +1,128 @@
 /* Your styles should be mobile-first and responsive */
 
-/** 
-  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example: 
+/**
+  * If you are unclear on how to utilize a mobile-first, responsive technique to write your CSS, here is an example:
   *
-  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
+  * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css
   *
 */
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    padding: 0;
+    margin: 0;
+      display: flex;
+    flex-direction: column;
+      justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+background: rgb(70,214,252);
+background: radial-gradient(circle, rgba(70,214,252,1) 0%, rgba(21,77,255,1) 100%);
+
+}
+main {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    min-width: 75%;
+    height: 300px;
+    background-color: white
+    ;
+}
+
+
+.question-section {
+    border: 2px dotted paleturquoise;
+display: flex;
+justify-content: space-evenly;
+
+}
+.question-div{
+    flex-direction: row;
+}
+.question-count{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.question-count span {
+    padding: 3px;
+    font-size: 1.3rem;
+}
+.question-list {
+    display: flex;
+    /* flex-direction: column; */
+    width: 100%;
+  border: 1px dotted blue;
+/* align-items: flex-start;
+align-content: stretch; */
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+/* align-items: stretch; */
+align-content: stretch;
+height: 225px;
+
+}
+.question-list > input {
+border: 1px solid black;
+
+    /* flex-grow: 1; */
+    /* flex-basis: auto; */
+
+    width: 80%;
+    padding: 5px;
+    margin: auto;
+
+    align-self: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+
+
+}
+
+
+.start-buttons {
+display: flex;
+flex-direction: row;
+
+width: 100%;
+justify-content: space-evenly;
+align-items: stretch;
+height: 75%;
+
+
+}
+.start-buttons button {
+
+    height: 90%;
+    margin: auto;
+    width: 45%;
+}
+.restart-buttons {
+    height: 29%;
+    width: 100%;
+}
+.final-score {
+    font-size: 1.3rem;
+}
+.restart-buttons button {
+
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-size: 2rem;
+}
+#finish-text {
+    font-size: 3rem;
+}
+button {
+    cursor: pointer;
+}
