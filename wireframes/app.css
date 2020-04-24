@@ -27,7 +27,8 @@ main {
 .question-section {
     border: 2px dotted paleturquoise;
 display: flex;
-justify-content: space-between;
+justify-content: space-evenly;
+
 }
 .question-div{
     flex-direction: row;
@@ -35,6 +36,8 @@ justify-content: space-between;
 .question-count{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+
 }
 .question-count span {
     padding: 3px;
@@ -94,4 +97,13 @@ height: 75%;
     height: 90%;
     margin: auto;
     width: 45%;
+}
+.restart-buttons button {
+
+    height: 90%;
+    margin: auto;
+    width: 45%;
+}
+#finish-text {
+    font-size: 3rem;
 }
