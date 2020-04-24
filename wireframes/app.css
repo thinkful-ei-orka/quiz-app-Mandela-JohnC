@@ -9,6 +9,8 @@ body {
       justify-content: center;
     align-items: center;
     min-height: 100vh;
+background: rgb(70,214,252);
+background: radial-gradient(circle, rgba(70,214,252,1) 0%, rgba(21,77,255,1) 100%);
 
 }
 main {
@@ -17,17 +19,20 @@ main {
     border-radius: 10px;
     min-width: 75%;
     height: 300px;
+    background-color: white
+    ;
 }
 
 .question-div {
     border: 2px dotted paleturquoise;
-display: flex;
+    height: 50px;
 
 
 
 }
 .question-section {
     border: 2px dotted paleturquoise;
+
 }
 .question-list {
     display: flex;
@@ -36,13 +41,32 @@ display: flex;
   border: 1px dotted blue;
 /* align-items: flex-start;
 align-content: stretch; */
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+/* align-items: stretch; */
+align-content: stretch;
+height: 175px;
+
 }
-.question-list > input {
-    height: 20px;
-    width: auto;
+.question-list > label {
+border: 1px solid black;
+
+    /* flex-grow: 1; */
+    /* flex-basis: auto; */
+
+    width: 80%;
+    padding: 5px;
+    margin: auto;
+
+    align-self: center;
+
+
+
 }
 .submit-button > button {
-    width: 100%;
-    height: 100%;
+display: block;
+
+
 
 }
