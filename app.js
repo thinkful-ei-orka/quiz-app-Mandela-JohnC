@@ -98,11 +98,43 @@ let start = function() {
         </container>`)
 
 }
+let questionsTemplate = function () {
+  $('main').html(`   <container>
+            <section class="question-section">
+                <div class="question-div">
+                    <h2>Question Placeholder</h2>
+                </div>
+                <div class="question-count">
+                    <span id="count">Question: 3/5</span>
+                    <span id="score">Score: 1/5</span>
+                </div>
+            </section>
+            <section class="question-area">
+                <div class="question-div">
+                    <form class="question-list" action="submit">
+                        <input type="button" value="dfgsdga gsdg fg fsdg fgdfgdfg " onclick="alert('test')">
+                        <input type="button" value="b" onclick="alert('test')">
+                        <input type="button" value="c" onclick="alert('test')">
+                        <input type="button" value="d" onclick="alert('test')">
+
+
+                    </form>
+                </div>
+
+            </section>
+        </container>`)
+}
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
+function render() {
+if (store.quizStarted === false) {
+  $('main').html(start())
+
+}
+}
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
-$(document).ready(start());
+$(render())
