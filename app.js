@@ -98,24 +98,27 @@ let startPageTemplate = function() {
         </container>`)
 
 }
+
+let currentQuestion = store.questions[store.questionNumber]
+let currentAnswer = currentQuestion.answers
 let questionsTemplate = function () {
-  $('main').html(`   <container>
+  $('main').html(`<container>
             <section class="question-section">
                 <div class="question-div">
-                    <h2>${store.questions.question[0]}</h2>
+                    <h2>${store.questions[store.questionNumber].question}</h2>
                 </div>
                 <div class="question-count">
-                    <span id="count">Question: 3/5</span>
-                    <span id="score">Score: 1/5</span>
+                    <span id="count">Question: ${store.questionNumber + 1}/${store.questions.length}</span>
+                    <span id="score">Score: ${store.score}/${store.questions.length}</span>
                 </div>
             </section>
             <section class="question-area">
                 <div class="question-div">
-                    <form class="question-list" action="submit">
-                        <input type="button" value="dfgsdga gsdg fg fsdg fgdfgdfg " onclick="alert('test')">
-                        <input type="button" value="b" onclick="alert('test')">
-                        <input type="button" value="c" onclick="alert('test')">
-                        <input type="button" value="d" onclick="alert('test')">
+                    <form class="question-list">
+                        <input type="submit" value="${store.questions[store.questionNumber].answers[0]}">
+                        <input type="submit" value="${store.questions[store.questionNumber].answers[1]}">
+                        <input type="submit" value="${store.questions[store.questionNumber].answers[2]}">
+                        <input type="submit" value="${store.questions[store.questionNumber].answers[3]}">
 
 
                     </form>
@@ -123,6 +126,7 @@ let questionsTemplate = function () {
 
             </section>
         </container>`)
+  answerQuestion();
 }
 
 let  finishTemplate = function () {
@@ -133,15 +137,16 @@ let  finishTemplate = function () {
 
   </section>
   <section class="final-score">
-      <h3>You got: <span id="final-score-num">5/5</span> correct!</h3>
+      <h3>You got: <span id="final-score-num">${store.score}/${store.questions.length}</span> correct!</h3>
 
   </section>
   <section class="restart-buttons">
 
-      <button class="restart-button" type="button">Restart</button>
+      <button class="restart-button" type="submit">Restart</button>
 
   </section>
 </container>`)
+  restartGame()
 }
 /********** RENDER FUNCTION(S) **********/
 
@@ -149,9 +154,13 @@ let  finishTemplate = function () {
 function render() {
 if (store.quizStarted === false) {
   $('main').html(startPageTemplate())
+  startGame();
 
 } else if (store.quizStarted === true && store.questionNumber < store.questions.length) {
-  $('main').html(questionsTemplate())
+$('main').html(questionsTemplate());
+
+
+
 } else {
   $('main').html(finishTemplate())
 }
@@ -161,9 +170,59 @@ if (store.quizStarted === false) {
 
 // These functions handle events (submit, click, etc)
 
+let startGame = function () {
+
+  $('.go-button').click(function () {
+    store.quizStarted = true;
+
+    render()
 
 
+  })
+
+}
+
+let answerQuestion = function() {
+  $('form input').click(function (event) {
+    event.preventDefault();
+    let guessedAnswer = event.currentTarget.value;
+    console.log(guessedAnswer)
+  console.log(event)
+
+  if (guessedAnswer === store.questions[store.questionNumber].correctAnswer) {
+    console.log('yep')
+    store.score++;
+    store.questionNumber++;
+    console.log(store.score + " " + store.questionNumber);
+    render()
+
+  } else {
+    console.log('nope')
+
+    store.questionNumber++;
+    console.log(store.score + " " + store.questionNumber);
+    render()
+  }
+  })
 
 
+}
 
-$(render())
+let restartGame = function() {
+
+  $('.restart-button').click(function () {
+    store.quizStarted = false;
+    store.questionNumber = 0;
+    store.score = 0;
+    console.log("test")
+    render()
+
+  })
+}
+function goQuiz() {
+  render();
+  startGame();
+  restartGame();
+}
+
+$(render)
