@@ -126,6 +126,7 @@ let questionsTemplate = function () {
 
             </section>
         </container>`)
+
   answerQuestion();
 }
 
@@ -182,26 +183,43 @@ let startGame = function () {
 
 }
 
-let answerQuestion = function() {
-  $('form input').click(function (event) {
+let answerQuestion = function () {
+  store.hasAnswered = false;
+  $('input').click(function (event) {
     event.preventDefault();
+    if (store.hasAnswered === true) {
+      return
+    }
+    store.hasAnswered = true;
     let guessedAnswer = event.currentTarget.value;
     console.log(guessedAnswer)
-  console.log(event)
-
-  if (guessedAnswer === store.questions[store.questionNumber].correctAnswer) {
+    console.log(event)
+    let correctAnswer = store.questions[store.questionNumber].correctAnswer;
+  if (guessedAnswer === correctAnswer) {
     console.log('yep')
     store.score++;
     store.questionNumber++;
     console.log(store.score + " " + store.questionNumber);
-    render()
+    console.log(event)
+$(event.currentTarget).addClass('correct')
+
+
+    setTimeout(function () {
+  render()
+},2000)
+
+
+
 
   } else {
     console.log('nope')
-
+    $(event.currentTarget).addClass('incorrect')
+    $(`.question-list input[value='${correctAnswer}']`).addClass('correct')
     store.questionNumber++;
     console.log(store.score + " " + store.questionNumber);
-    render()
+    setTimeout(function () {
+      render()
+    }, 2000)
   }
   })
 
