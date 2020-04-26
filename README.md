@@ -1,1 +1,1 @@
-### Boilerplate app structure for Quiz App project
+Worked in a pair with Mandela and Jon C.
