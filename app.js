@@ -179,7 +179,10 @@ function render() {
 /********** EVENT HANDLER FUNCTIONS **********/
 
 // These functions handle events (submit, click, etc)
-
+/**
+ * Renders the main area of the game
+ * Sets quizstarted to true on click
+ */
 let startGame = function () {
   $('.go-button').click(function () {
     store.quizStarted = true;
@@ -187,7 +190,12 @@ let startGame = function () {
     render();
   });
 };
-
+/**
+ * First checks if person has answered the question
+ * When clicked if they haven't answered it will check their answer to the correctAnswer
+ * If right, highlights green
+ * If wrong, highlights red and highlights the correct in green
+ */
 let answerQuestion = function () {
   store.hasAnswered = false;
   $('input').click(function (event) {
@@ -201,7 +209,6 @@ let answerQuestion = function () {
     console.log(event);
     let correctAnswer = store.questions[store.questionNumber].correctAnswer;
     if (guessedAnswer === correctAnswer) {
-      console.log('yep');
       store.score++;
       store.questionNumber++;
       console.log(store.score + ' ' + store.questionNumber);
@@ -212,7 +219,6 @@ let answerQuestion = function () {
         render();
       }, 2000);
     } else {
-      console.log('nope');
       $(event.currentTarget).addClass('incorrect');
       $(`.question-list input[value='${correctAnswer}']`).addClass('correct');
       store.questionNumber++;
@@ -224,12 +230,16 @@ let answerQuestion = function () {
   });
 };
 
+/**
+ * Re-renders the page to show how many answers correct
+ * Asks if you want to play again
+ * If the button is clicked, it resets quizStarted to false
+ */
 let restartGame = function () {
   $('.restart-button').click(function () {
     store.quizStarted = false;
     store.questionNumber = 0;
     store.score = 0;
-    console.log('test');
     render();
   });
 };
