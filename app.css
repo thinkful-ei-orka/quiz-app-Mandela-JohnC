@@ -76,8 +76,14 @@ main {
   font-size: 120%;
   font-weight: 500;
   flex-wrap: wrap;
-  word-wrap: normal;
+  white-space: normal;
   height: auto;
+  background-color: white;
+  border: 2px solid lightgray;
+  border-radius: 5px;
+}
+.question-list > input:hover {
+  border: 2px solid grey;
 }
 
 .start-buttons {
@@ -89,6 +95,8 @@ main {
 }
 .start-buttons button {
   height: 100%;
+  font-size: 150%;
+  font-weight: 700;
   /* margin: 0px 5px 0px 5px; */
 
   width: 80%;
