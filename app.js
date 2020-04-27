@@ -82,8 +82,8 @@ const store = {
 /**
  * Generate HTML Start Screen
  */
-let startPageTemplate = function () {
-  $('main').html(`<container>
+function startPageTemplate() {
+  $('main').html(`
             <section class="question-section">
 
                 <h2>Are you ready?</h2>
@@ -91,16 +91,16 @@ let startPageTemplate = function () {
             </section>
             <section class="start-buttons">
 
-                <button class="go-button" type="button">Go</button>
-                <button class="scared-button" type="button">No I'm scared</button>
-            </section>
-        </container>`);
-};
+                <button class="go-button" type="button">Let's Go</button>
 
-let currentQuestion = store.questions[store.questionNumber];
-let currentAnswer = currentQuestion.answers;
-let questionsTemplate = function () {
-  $('main').html(`<container>
+            </section>
+        `);
+}
+
+const currentQuestion = store.questions[store.questionNumber];
+const currentAnswer = currentQuestion.answers;
+function questionsTemplate() {
+  $('main').html(`
             <section class="question-section">
                 <div class="question-div">
                     <h2>${store.questions[store.questionNumber].question}</h2>
@@ -135,13 +135,13 @@ let questionsTemplate = function () {
                 </div>
 
             </section>
-        </container>`);
+        `);
 
   answerQuestion();
-};
+}
 
-let finishTemplate = function () {
-  $('main').html(`<container>
+function finishTemplate() {
+  $('main').html(`
   <section class="question-section">
 
       <h2 id="finish-text">Nice!</h2>
@@ -156,9 +156,9 @@ let finishTemplate = function () {
       <button class="restart-button" type="submit">Restart</button>
 
   </section>
-</container>`);
+`);
   restartGame();
-};
+}
 /********** RENDER FUNCTION(S) **********/
 
 // This function conditionally replaces the contents of the <main> tag based on the state of the store
@@ -183,20 +183,20 @@ function render() {
  * Renders the main area of the game
  * Sets quizstarted to true on click
  */
-let startGame = function () {
+function startGame() {
   $('.go-button').click(function () {
     store.quizStarted = true;
 
     render();
   });
-};
+}
 /**
  * First checks if person has answered the question
  * When clicked if they haven't answered it will check their answer to the correctAnswer
  * If right, highlights green
  * If wrong, highlights red and highlights the correct in green
  */
-let answerQuestion = function () {
+function answerQuestion() {
   store.hasAnswered = false;
   $('input').click(function (event) {
     event.preventDefault();
@@ -204,15 +204,12 @@ let answerQuestion = function () {
       return;
     }
     store.hasAnswered = true;
-    let guessedAnswer = event.currentTarget.value;
-    console.log(guessedAnswer);
-    console.log(event);
-    let correctAnswer = store.questions[store.questionNumber].correctAnswer;
+    const guessedAnswer = event.currentTarget.value;
+    const correctAnswer = store.questions[store.questionNumber].correctAnswer;
     if (guessedAnswer === correctAnswer) {
       store.score++;
       store.questionNumber++;
-      console.log(store.score + ' ' + store.questionNumber);
-      console.log(event);
+
       $(event.currentTarget).addClass('correct');
 
       setTimeout(function () {
@@ -222,31 +219,31 @@ let answerQuestion = function () {
       $(event.currentTarget).addClass('incorrect');
       $(`.question-list input[value='${correctAnswer}']`).addClass('correct');
       store.questionNumber++;
-      console.log(store.score + ' ' + store.questionNumber);
+
       setTimeout(function () {
         render();
       }, 2000);
     }
   });
-};
+}
 
 /**
  * Re-renders the page to show how many answers correct
  * Asks if you want to play again
  * If the button is clicked, it resets quizStarted to false
  */
-let restartGame = function () {
+function restartGame() {
   $('.restart-button').click(function () {
     store.quizStarted = false;
     store.questionNumber = 0;
     store.score = 0;
     render();
   });
-};
+}
 function goQuiz() {
   render();
   startGame();
   restartGame();
 }
 
-$(render);
+$(goQuiz());
