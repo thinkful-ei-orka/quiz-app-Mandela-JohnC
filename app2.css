@@ -13,7 +13,12 @@
 }
 h1 {
   font-size: 3rem;
-  text-align: center;
+}
+@media (max-width: 700px) {
+  .main {
+    width: auto;
+    height: auto;
+  }
 }
 
 body {
@@ -37,7 +42,7 @@ main {
   /* min-height: 50vh; */
   background-color: white;
   height: auto;
-  width: 500px;
+  width: 700px;
 }
 
 .question-div {
@@ -103,7 +108,7 @@ main {
 .final-score {
   font-size: 1.3rem;
 }
-.main-button {
+.restart-buttons button {
   height: 100%;
   margin: auto;
   width: 100%;
@@ -135,19 +140,4 @@ button {
   height: 50px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
-}
-@media (min-width: 900px) {
-  main {
-    width: 900px;
-    height: auto;
-  }
-}
-@media (max-width: 500px) {
-  main {
-    width: 300px;
-    height: auto;
-  }
-}
-.hidden {
-  display: none;
 }

@@ -19,7 +19,7 @@ const store = {
     },
     {
       question:
-        'The which method calls a function once for each element in an array?',
+        'Which method calls a function one time for each element in an array?',
       answers: ['forTheWin()', 'forEach()', 'forCamelot()', 'forEvery()'],
       correctAnswer: 'forEach()',
     },
@@ -39,11 +39,11 @@ const store = {
       answers: [
         'returns a map to El Dorado',
         'returns an object with the function name as the key and the original array as the value',
-        'returns the orginal array with the results of the funcion called on each element',
-        'returns a new array with the results of the funcion called on each element in the orginal array',
+        'returns the orginal array with the results of the function called on each element',
+        'returns a new array with the results of the function called on each element in the orginal array',
       ],
       correctAnswer:
-        'returns a new array with the results of the funcion called on each element in the orginal array',
+        'returns a new array with the results of the function called on each element in the orginal array',
     },
     {
       question: 'The every() method does what for each element in an array?',
@@ -89,11 +89,11 @@ function startPageTemplate() {
                 <h2>Are you ready?</h2>
 
             </section>
-            <section class="start-buttons">
 
-                <button class="go-button" type="button">Let's Go</button>
 
-            </section>
+                <button class="go-button main-button" type="button">Let's Go</button>
+
+
         `);
 }
 
@@ -132,9 +132,23 @@ function questionsTemplate() {
 
 
                     </form>
+
                 </div>
 
+
+
             </section>
+            <section class="answer-check-correct hidden">
+            <div id="correct-answer" >Correct!<div>
+            <button class="next-button" >Next</button>
+            </section>
+            <section class="answer-check-incorrect hidden"><div>
+                Incorrect, the answer is "${
+                  store.questions[store.questionNumber].correctAnswer
+                }"
+            </div>
+            <button class="next-button">Next</button></section>
+
         `);
 
   answerQuestion();
@@ -144,20 +158,16 @@ function finishTemplate() {
   $('main').html(`
   <section class="question-section">
 
-      <h2 id="finish-text">Nice!</h2>
-
-  </section>
-  <section class="final-score">
-      <h3>You got: <span id="final-score-num">${store.score}/${store.questions.length}</span> correct!</h3>
+      <h2 id="final-score">You got: <span id="final-score-num">${store.score}/${store.questions.length}</span> correct!</h2>
 
   </section>
   <section class="restart-buttons">
 
-      <button class="restart-button" type="submit">Restart</button>
+      <button class="restart-button main-button" type="submit">Restart</button>
 
   </section>
 `);
-  restartGame();
+  listenForRestart();
 }
 /********** RENDER FUNCTION(S) **********/
 
@@ -210,20 +220,21 @@ function answerQuestion() {
       store.score++;
       store.questionNumber++;
 
-      $(event.currentTarget).addClass('correct');
-
-      setTimeout(function () {
-        render();
-      }, 2000);
+      // $(event.currentTarget).addClass('correct');
+      $('.answer-check-correct').toggleClass('hidden');
+      listenForNextClick();
     } else {
-      $(event.currentTarget).addClass('incorrect');
-      $(`.question-list input[value='${correctAnswer}']`).addClass('correct');
+      $('.answer-check-incorrect').toggleClass('hidden');
       store.questionNumber++;
-
-      setTimeout(function () {
-        render();
-      }, 2000);
+      listenForNextClick();
+      // $(event.currentTarget).addClass('incorrect');
+      // $(`.question-list input[value='${correctAnswer}']`).addClass('correct');
     }
+  });
+}
+function listenForNextClick() {
+  $('.next-button').click(function () {
+    render();
   });
 }
 
@@ -232,18 +243,20 @@ function answerQuestion() {
  * Asks if you want to play again
  * If the button is clicked, it resets quizStarted to false
  */
+function listenForRestart() {
+  //more of a "watch for restart game"
+  $('.restart-button').click(restartGame);
+}
 function restartGame() {
-  $('.restart-button').click(function () {
-    store.quizStarted = false;
-    store.questionNumber = 0;
-    store.score = 0;
-    render();
-  });
+  store.quizStarted = false;
+  store.questionNumber = 0;
+  store.score = 0;
+  render();
 }
 function goQuiz() {
   render();
   startGame();
-  restartGame();
+  listenForRestart();
 }
 
-$(goQuiz());
+$(goQuiz); //event callback pattern, when document object fires event called ready, when all sources have loaded
