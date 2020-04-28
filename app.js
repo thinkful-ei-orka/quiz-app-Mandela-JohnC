@@ -10,12 +10,12 @@ const store = {
       question:
         'The shift() method removes the first element from an array and does what next?',
       answers: [
-        'returns the next element in the array',
-        'returns a shrug emoji in Unicode Hex',
-        'returns the removed element',
-        'returns a copy of the array',
+        'Returns the next element in the array',
+        'Returns a shrug emoji in Unicode Hex',
+        'Returns the removed element',
+        'Returns a copy of the array',
       ],
-      correctAnswer: 'returns the removed element',
+      correctAnswer: 'Returns the removed element',
     },
     {
       question:
@@ -26,34 +26,34 @@ const store = {
     {
       question: 'The filter() method returns an array of what?',
       answers: [
-        'all elements that fail the test function',
-        'index numbers of all elements that pass the test function',
-        'all elements that pass the test function',
-        'all elements that are the specified data type',
+        'All elements that fail the test function',
+        'Index numbers of all elements that pass the test function',
+        'All elements that pass the test function',
+        'All elements that are the specified data type',
       ],
-      correctAnswer: 'all elements that pass the test function',
+      correctAnswer: 'All elements that pass the test function',
     },
     {
       question:
         'The map() method does what with a provided function as an argument?',
       answers: [
-        'returns a map to El Dorado',
-        'returns an object with the function name as the key and the original array as the value',
-        'returns the orginal array with the results of the function called on each element',
-        'returns a new array with the results of the function called on each element in the orginal array',
+        'Returns a map to El Dorado',
+        'Returns an object with the function name as the key and the original array as the value',
+        'Returns the orginal array with the results of the function called on each element',
+        'Returns a new array with the results of the function called on each element in the orginal array',
       ],
       correctAnswer:
-        'returns a new array with the results of the function called on each element in the orginal array',
+        'Returns a new array with the results of the function called on each element in the orginal array',
     },
     {
       question: 'The every() method does what for each element in an array?',
       answers: [
-        'checks if elements pass a test as provided as a fucntion',
-        'converts the elements to true or false depending the provided function',
-        'creates a new array with each element being identical to the first element in the array',
-        "creates a new array with converting each element to 'every'",
+        'Checks if elements pass a test as provided as a function',
+        'Converts the elements to true or false depending on the provided function',
+        'Creates a new array with each element being identical to the first element in the array',
+        "Creates a new array converting each element to 'every'",
       ],
-      correctAnswer: 'checks if elements pass a test as provided as a fucntion',
+      correctAnswer: 'Checks if elements pass a test as provided as a function',
     },
   ],
   quizStarted: false,
