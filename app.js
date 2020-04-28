@@ -143,7 +143,7 @@ function questionsTemplate() {
             <button class="next-button" >Next</button>
             </section>
             <section class="answer-check-incorrect hidden"><div>
-                Incorrect, the answer is "${
+                Incorrect, the answer is:"${
                   store.questions[store.questionNumber].correctAnswer
                 }"
             </div>

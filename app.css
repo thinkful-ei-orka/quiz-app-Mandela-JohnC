@@ -151,3 +151,26 @@ button {
 .hidden {
   display: none;
 }
+.answer-check-correct {
+  background-color: green;
+  color: white;
+  font-size: 2rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.answer-check-incorrect {
+  background-color: red;
+  color: white;
+  font-size: 2rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.next-button {
+  height: 40px;
+  width: 100%;
+  font-size: 1.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: none;
+  background: white;
+}
