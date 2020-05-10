@@ -38,7 +38,7 @@ main {
   /* min-height: 50vh; */
   background-color: white;
   height: auto;
-  width: 500px;
+  width: 300px;
 }
 
 .question-div {
@@ -137,18 +137,21 @@ button {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
+
+@media (min-width: 500px) {
+  main {
+    width: 500px;
+    height: auto;
+  }
+}
+
 @media (min-width: 900px) {
   main {
     width: 900px;
     height: auto;
   }
 }
-@media (max-width: 500px) {
-  main {
-    width: 300px;
-    height: auto;
-  }
-}
+
 .hidden {
   display: none;
 }
